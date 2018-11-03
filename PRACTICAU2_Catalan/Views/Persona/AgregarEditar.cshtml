@@ -1,0 +1,114 @@
+﻿@model PRACTICAU2_Catalan.Models.Persona
+@{
+    ViewBag.Title = "Agregar Editar";
+    string sexm = "false", sexf = "false", sex = "";
+
+    if (Model.idpersona > 0)
+    {
+        if (Model.sexo.Equals("M"))
+        {
+            sexm = "true";
+        }
+        else if (Model.sexo.Equals("F"))
+        {
+            sexf = "true";
+        }
+    }
+}
+<br />
+<h2>Agregar Editar</h2>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Persona/Index">Persona</a></li>
+        <li class="breadcrumb-item active">
+            @(Model.idpersona > 0 ? Model.nombre
+                                                         : "Nuevo Registro")
+        </li>
+    </ol>
+</nav>
+
+@using (Html.BeginForm("Guardar", "Persona", FormMethod.Post, new { @id = "frm-persona" }))
+{
+    @Html.HiddenFor(x => x.idpersona)
+    <div class="panel panel-default">
+        <div class="panel-heading">Informacion de la Persona</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.Label("Codigo:")
+                @Html.TextBoxFor(x => x.idpersona, new { @class = "form-control", disabled = true })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Codigo:")
+                @Html.TextBoxFor(x => x.codigo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.codigo, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("DNI:")
+                @Html.TextBoxFor(x => x.dni, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.dni, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Nombre:")
+                @Html.TextBoxFor(x => x.nombre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.nombre, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Apellido:")
+                @Html.TextBoxFor(x => x.apellido, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.apellido, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Correo:")
+                @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.email, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Sexo:")
+                <br />
+                @*<input type="radio" id="sexo" name="sexo" value="M"> Masculino<br>
+            <input type="radio" id="sexo" name="sexo" value="F"> Masculino<br>*@
+                @Html.Label("Masculino")
+                @Html.RadioButtonFor(m => m.sexo, "M")
+                @Html.ValidationMessageFor(x => x.sexo, null, new { @class = "label label-danger", @checked = sexm })
+
+                @Html.Label("Femenino")
+                @Html.RadioButtonFor(m => m.sexo, "F")
+                @Html.ValidationMessageFor(x => x.sexo, null, new { @class = "label label-danger", @checked = sexf })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("URL:")
+                @Html.TextBoxFor(x => x.url, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.url, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Celular:")
+                @Html.TextBoxFor(x => x.celular, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.celular, null, new { @class = "label label-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Estado:")
+                <select name="estado" class="form-control">
+                    <option @(Model.estado == "" ? "selected" : "") value="">-Seleccionar-</option>
+                    <option @(Model.estado == "A" ? "selected" : "") value="A">Activo</option>
+                    <option @(Model.estado == "I" ? "selected" : "") value="I">Inactivo</option>
+                </select>
+                @Html.ValidationMessageFor(x => x.estado, null, new { @class = "label label-danger" })
+            </div>
+
+        </div>
+    </div>
+    <div class="text-right">
+        <button type="submit" class="btn btn-primary">GRABAR</button>
+        <a href="~/Persona" class="btn btn-danger">CANCELAR</a>
+    </div>
+}

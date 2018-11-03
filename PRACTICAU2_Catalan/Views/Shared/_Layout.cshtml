@@ -1,0 +1,93 @@
+﻿
+@{
+    string controlador = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+
+    PRACTICAU2_Catalan.Models.Usuario usuario = new PRACTICAU2_Catalan.Models.Usuario().Obtener(PRACTICAU2_Catalan.Models.SessionHelper1.GetUser());
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+
+    <link href="~/assests/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/assests/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/assests/css/buttons.dataTables.min.css" rel="stylesheet" />
+    <link href="~/assests/datatables/bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/Content/datatables/css/jquery.dataTables.min.css" rel="stylesheet" />
+        <link href="~/Content/datatables/css/buttons.dataTables.min.css" rel="stylesheet" />*@
+
+
+</head>
+<body>
+    @if (controlador != "login")
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Practica", "Index", "Usuario", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Persona", "Index", "Persona")</li>
+                        <li>@Html.ActionLink("Correo", "Index", "Correo")</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <img id="user-pic" src="~/Uploads/" width="40" height="40" />
+                                <b>Bienvenido</b>, @usuario.Persona.nombre, @usuario.Persona.apellido <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#">Perfil de Usuario</a>
+                                </li>
+                                <li>
+                                    <a href="~/Login/logout">Finalizar Sesión</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br />
+    }
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            </footer>
+        </div>
+
+        <script src="~/assests/js/jquery-3.3.1.js"></script>
+        <script src="~/assests/js/bootstrap.min.js"></script>
+
+        <!-- LOGIN -->
+        <script src="~/assests/Login/ini.js"></script>
+        <script src="~/assests/Login/jquery.form.js"></script>
+        <script src="~/assests/Login/jquery.validate.min.js"></script>
+        <script src="~/assests/Login/jquery.validate.unobtrusive.min.js"></script>
+
+
+        @* DATA TABLES *@
+        <script src="~/assests/datatables/jquery.dataTables.min.js"></script>
+        <script src="~/assests/datatables/dataTables.buttons.min.js"></script>
+        <script src="~/assests/datatables/jszip.min.js"></script>
+        <script src="~/assests/datatables/pdfmake.min.js"></script>
+        <script src="~/assests/datatables/vfs_fonts.js"></script>
+        <script src="~/assests/datatables/buttons.html5.min.js"></script>
+        <script src="~/assests/datatables/datatables-examples.js"></script>
+
+    </body>
+</html>
+

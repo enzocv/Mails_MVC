@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Autenticación";
+}
+
+<div id="login">
+    <h1 class="page-header text-center">Autenticación en el sistema</h1>
+    <h4><spam style="color:red;"><b>IMPORTANTE !!</b></spam><br />La columna "clave" de la tabla Usuaio, debe de ser la contraseña de la cuenta de la cual se enviara el correo.</h4>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Acceso al sistema</div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("Validar", "Login", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <label>Usuario</label>
+                            <input type="text" name="Usuario" class="form-control" placeholder="Ingrese cuenta de usuario" />
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" name="Password" class="form-control" placeholder="Ingrese su password" />
+                        </div>
+                        <div class="text-right">
+                            <button data-ajax="true" type="submit" class="btn btn-primary">
+                                Ingresar
+                            </button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

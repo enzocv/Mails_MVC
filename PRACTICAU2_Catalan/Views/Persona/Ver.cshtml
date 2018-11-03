@@ -1,0 +1,68 @@
+﻿@model PRACTICAU2_Catalan.Models.Persona
+@{
+    ViewBag.Title = "Ver Persona";
+}
+<br />
+<h2>Ver Persona</h2>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="~/Persona/Index">Persona</a></li>
+        <li class="breadcrumb-item active">@Model.nombre</li>
+    </ol>
+</nav>
+
+<div class="panel-panel-default">
+    <div class="panel-heading">
+        Informacion detallada de la Persona
+    </div>
+
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt>Id:</dt>
+            <dd>@Model.idpersona</dd>
+
+            <dt>Codigo:</dt>
+            <dd>@Model.codigo</dd>
+
+            <dt>DNI:</dt>
+            <dd>@Model.dni</dd>
+
+            <dt>Nombre:</dt>
+            <dd>@Model.nombre</dd>
+
+            <dt>Apellido:</dt>
+            <dd>@Model.apellido</dd>
+
+            <dt>Correo:</dt>
+            <dd>@Model.email</dd>
+
+            <dt>Sexo:</dt>
+            @if (Model.sexo.Equals("M"))
+            {
+                <dd>Masculino</dd>
+            }
+            else
+            {
+                <dd>Femenino</dd>
+            }
+
+            <dt>URL:</dt>
+            <dd>@Model.url</dd>
+
+            <dt>Celular:</dt>
+            <dd>@Model.celular</dd>
+
+            <dt>Estado:</dt>
+            @if (@Model.estado.Equals("A"))
+            {
+                <dd>Activo</dd>
+            }
+            else
+            {
+                <dd>Inactivo</dd>
+            }
+
+        </dl>
+    </div>
+</div>

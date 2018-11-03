@@ -1,0 +1,48 @@
+﻿@model List<PRACTICAU2_Catalan.Models.Persona>
+@{
+    ViewBag.Title = "Persona";
+}
+<br />
+<h1 class="page-header text-center ">
+    Mantenimiento de Persona
+</h1>
+<div class="text-right">
+    <a href="~/Persona/AgregarEditar/"
+       class="btn btn-info">Agregar Nuevo</a>
+</div>
+
+<table class="table" id="datatable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Codigo</th>
+            <th>DNI</th>
+            <th>Nombre y Apellido</th>
+            <th>email</th>
+            <th>celular</th>
+            <th>URL</th>
+            <th>estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th>@(item.idpersona)</th>
+            <th>@(item.codigo)</th>
+            <th>@(item.dni)</th>
+            <th>@(item.nombre + " " + item.apellido)</th>
+            <th>@(item.email)</th>
+            <th>@(item.celular)</th>
+            <th>@(item.url)</th>
+            <th>@(item.estado)</th>
+            <th style="align-content:center;">
+                <a href="~/Persona/Ver/@item.idpersona" class="btn btn-xs btn-warning">Detalles</a>
+                <a href="~/Persona/AgregarEditar/@item.idpersona" class="btn btn-xs btn-primary">Modificar</a>
+                <a href="~/Persona/Eliminar/@item.idpersona" class="btn btn-xs btn-danger" onclick="return confirm('¿Esta seguro de eliminar el registro ...?')">Eliminar</a>
+            </th>
+        </tr>
+        }
+    </tbody>
+</table>

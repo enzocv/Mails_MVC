@@ -1,0 +1,28 @@
+﻿@model List<PRACTICAU2_Catalan.Models.Persona>
+<table class="table" id="">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Nombre</th>
+            <th>Email personal</th>
+            <th>Email trabajo</th>
+            <th>URL</th>
+            <th>Enviar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th>@(item.apellido)</th>
+            <th>@(item.nombre)</th>
+            <th>@(item.email)</th>
+            <th>@(item.email)</th>
+            <th>@(item.url)</th>
+            <th>
+                <input type="checkbox" value="@(item.idpersona)" onclick="myFunction()" />
+            </th>
+        </tr>
+        }
+    </tbody>
+</table>
